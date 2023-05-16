@@ -1,34 +1,56 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Components
 
-First, run the development server:
+app/api/route.js
+- fetching lunch lists, needs optimization & cache control maybe
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## to do
+- omit the date as soon as possible, preferably when scraping for the data (note: every restaurant has a different way of formatting the numbers, example blancco "15.5" and factory "15.5.2023")
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## notes
 
-## Learn More
+- removal of date probably easiest to do in the array
+    - blancco and maplestr date is in the first index
+    - factory date and first food item are in the same index
 
-To learn more about Next.js, take a look at the following resources:
+blancco fetch result:
+[
+  '15.5',
+  'Herkkusienikeitto (L+G)',
+  'Runsas salaattipöytä ja leipää',
+  'Juustoinen sveitsinleike (VL)– perunamuusia (L+G)',
+  'Paistettua riisiä ja kasviksia (M+G+VS+VE)',
+  'Voissa paistetut puna-ahvenfileet (L+G)– kevätsipulikastiketta (L+G)– uudet perunat tillillä (M+G+VE)',
+  'Savuporo-koskenlaskijapasta (L)',
+  'Kebabliha-jalapeno pizzaa (L)',
+  'Mustikka-vadelmapiirakka (L)'
+]
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+factory fetch result:
+[
+  '15.5.2022Basilikalla maustettu palsternakkasosekeitto (L+G)',
+  'Paistettua lohta sitrusvinaigretella (M+G) paahdetut varhaisperunat (VE+G) tzatziki (VL+G+VS)',
+  'Pulled pork tortillat cheddarjuustolla (VL+VS) paahdetut sipulit (VE), jalapeno, creme fraiche (L+G)',
+  'Pepperoni-paprikapasta tomaatti-jalapenokastikkeella (L+VS)',
+  'Teriyaki-paahdetut kasvikset ja tofua tuoreella korianterilla (VE+G+VS)',
+  'Ranskalaista kirsikka-pannukakkua “',
+  'Clafoutis” (L) vaniljavaahtoa (L+G)'
+]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+mapleStr fetch result:
+[
+  '15.5.-',
+  'Kievin kanaa (Lactose free, garlic, citrus), riisiä (vegan, gluten free) ja currymajoneesia (egg, lactose free, chili, citrus)-',
+  'Makkarastrognaoff (Lactose free, glutein free, garlic) ja perunamuusia (Lactose free, glutein free)-',
+  'Tofua kookos-kasviskastikkeessa (dairy free, glutein free, garlig, chili,soy, citrus) ja riisiä (dairy free, glutein free)',
+  'WELL-',
+  'Päivän salaatti ja',
+  'Pähkinäinen bataattisosekeitto (Lactose free, glutein free, soy, nuts)',
+  'WELL-',
+  'Mustikkasmoothie (Lactose free, glutein free)-',
+  'Grilli:',
+  'Katkarapuwokkia (dairy free, gluten free,soy, chili, citrus) 13€'
+]
