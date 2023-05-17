@@ -5,5 +5,8 @@ export async function getData(url) {
         throw new Error('Failed to fetch data')
     }
     
-    return res.text();
+    return {
+        url: url,
+        body: await res.text()
+    };
 }
